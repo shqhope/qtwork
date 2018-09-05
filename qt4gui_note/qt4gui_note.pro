@@ -22,20 +22,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialogreadme.cpp \
-    mylib/zhylib.cpp \
-    serialport/dialogcom.cpp \
-    serialport/commonfunctions.cpp
+    mylib/zhylib.cpp
 
 HEADERS  += mainwindow.h \
     dialogreadme.h \
-    mylib/zhylib.h \
-    serialport/dialogcom.h \
-    serialport/commonfunctions.h
+    mylib/zhylib.h
 
 FORMS    += mainwindow.ui \
-    dialogreadme.ui \
-    serialport/dialogcom.ui
+    dialogreadme.ui
+
+
+unix {
+SOURCES += serialport/dialogcom.cpp \
+    serialport/commonfunctions.cpp
+
+HEADERS += serialport/dialogcom.h \
+    serialport/commonfunctions.h
+
+FORMS    += serialport/dialogcom.ui
+
+DEFINES += LINUX
+}
+
+DISTFILES += \
+    Makefile \
+    Makefile.Debug \
+    Makefile.Release

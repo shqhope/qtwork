@@ -3,6 +3,7 @@
 #include <errno.h>  /*错误号定义*/
 #include <sys/stat.h>
 #include <fcntl.h>  /*文件控制定义*/
+
 #include <termios.h>    /*PPSIX 终端控制定义*/
 #include <stdlib.h> /*标准函数库定义*/
 #include <sys/types.h>
