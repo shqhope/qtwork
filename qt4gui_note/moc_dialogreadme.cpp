@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dialogreadme.h'
 **
-** Created: Fri Aug 31 17:31:25 2018
+** Created: Wed Sep 5 14:21:24 2018
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

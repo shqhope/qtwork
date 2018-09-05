@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
-    <height>385</height>
+    <width>604</width>
+    <height>423</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox"/>
+            <widget class="QComboBox" name="comboBox_ComPort"/>
            </item>
           </layout>
          </item>
@@ -71,16 +71,19 @@
              <item row="0" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_2">
                <item>
-                <widget class="QComboBox" name="comboBox_2"/>
+                <widget class="QComboBox" name="comboBox_ByteRate"/>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox_3"/>
+                <widget class="QComboBox" name="comboBox_Bit"/>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox_4"/>
+                <widget class="QComboBox" name="comboBox_Check"/>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox_5"/>
+                <widget class="QComboBox" name="comboBox_Stop"/>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboBox_Stream"/>
                </item>
               </layout>
              </item>
@@ -106,24 +109,31 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>流控制：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
                  <widget class="QLabel" name="label_3">
                   <property name="text">
                    <string>奇偶校验：</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="4" column="0">
                  <widget class="QLabel" name="label_4">
                   <property name="text">
                    <string>停止位：</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_5">
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_6">
                   <property name="text">
-                   <string>流控制：</string>
+                   <string>数据位：</string>
                   </property>
                  </widget>
                 </item>
@@ -169,6 +179,16 @@
                 </property>
                 <property name="text">
                  <string>打开串口</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QSpinBox" name="spinBox"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>获取地址</string>
                 </property>
                </widget>
               </item>

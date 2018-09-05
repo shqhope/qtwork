@@ -8,9 +8,6 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = qt4gui_note
-TEMPLATE = app
-
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -25,15 +22,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     dialogreadme.cpp \
-    mylib/zhylib.cpp
+    mylib/zhylib.cpp \
+    serialport/threadreadcom.cpp
 
 HEADERS  += mainwindow.h \
     dialogreadme.h \
-    mylib/zhylib.h
+    mylib/zhylib.h \
+    serialport/threadreadcom.h
 
 FORMS    += mainwindow.ui \
     dialogreadme.ui
 
+TARGETPATH = ./win/
 
 unix {
 SOURCES += serialport/dialogcom.cpp \
@@ -45,9 +45,15 @@ HEADERS += serialport/dialogcom.h \
 FORMS    += serialport/dialogcom.ui
 
 DEFINES += LINUX
+TARGETPATH = ./linux/
 }
 
 DISTFILES += \
     Makefile \
     Makefile.Debug \
     Makefile.Release
+
+
+
+TARGET = $$TARGETPATH/qt4gui_note
+TEMPLATE = app
