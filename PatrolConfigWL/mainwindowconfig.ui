@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowConfig</class>
+ <widget class="QMainWindow" name="MainWindowConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>巡视配置</string>
+    </property>
+    <addaction name="action"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>设备配置</string>
+    </property>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
+    <addaction name="separator"/>
+    <addaction name="action_4"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>业务配置</string>
+    </property>
+    <widget class="QMenu" name="menu_4">
+     <property name="title">
+      <string>存储</string>
+     </property>
+     <addaction name="action_12"/>
+     <addaction name="action_13"/>
+    </widget>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>联动设置</string>
+     </property>
+     <addaction name="action_11"/>
+    </widget>
+    <addaction name="action_5"/>
+    <addaction name="menu_4"/>
+    <addaction name="menu_5"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>我的小菜单</string>
+    </property>
+    <addaction name="action_6"/>
+    <addaction name="action_10"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_6"/>
+  </widget>
+  <action name="action">
+   <property name="text">
+    <string>巡视配置</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>类型管理</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>设备管理</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>通道维护</string>
+   </property>
+  </action>
+  <action name="actionJjj01">
+   <property name="text">
+    <string>jjj01</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>策略设置</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>策略应用</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>联动公式配置</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>告警配置</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>联动公式配置</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>策略设置</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>策略应用</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>视频跳转测试</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>空调配置</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
