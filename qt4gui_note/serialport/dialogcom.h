@@ -2,7 +2,11 @@
 #define DIALOGCOM_H
 
 #include <QDialog>
-#include "threadreadcom.h"
+#ifdef LINUX
+#include "../src_linux/threadreadcom.h"
+#else
+#include "../src_win/threadcomwin.h"
+#endif
 
 namespace Ui {
 class DialogCOM;
@@ -14,24 +18,20 @@ class DialogCOM : public QDialog
 	bool m_bOpend;
 	ComconfStru m_comPara;
 
-	//void closeEvent(QCloseEvent *);
+	void closeEvent(QCloseEvent *);
 public:
 	explicit DialogCOM(QWidget *parent = 0);
 	~DialogCOM();
 	inline bool BOpend(){return m_bOpend;}
 	int GetAddress();
 	
-signals:
-	void signal_sendCmd(ConditionStru);
-
 private slots:
 	void on_pushButton_clicked();
 	void slot_ComParaChange(const QString &refStr);
 	void slot_recvRecord(ConditionStru stru);
 	void slot_sendCmd(ConditionStru stru);
-	void on_pushButton_3_clicked();
 
-	void on_pushButton_2_clicked();
+	void on_pushButton_3_clicked();
 
 private:
 	Ui::DialogCOM *ui;

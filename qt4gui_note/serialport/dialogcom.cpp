@@ -1,8 +1,12 @@
 #include "dialogcom.h"
 #include "ui_dialogcom.h"
 #include <stdio.h>
+#include "widgetcondition.h"
+#include <QMessageBox>
 
-extern ThreadReadCOM *g_threadCom;
+class WidgetCondition;
+
+extern ThreadCom *g_threadCom;
 
 DialogCOM::DialogCOM(QWidget *parent) :
 	QDialog(parent),
@@ -15,6 +19,7 @@ DialogCOM::DialogCOM(QWidget *parent) :
 	ui->spinBox->setValue(1);
 
 	QStringList strListPort2;
+#ifdef LINUX
 	strListPort2.append("/dev/ttyS0");
 	strListPort2.append("/dev/ttyS1");
 	strListPort2.append("/dev/ttyS2");
@@ -31,6 +36,18 @@ DialogCOM::DialogCOM(QWidget *parent) :
 	strListPort2.append("/dev/ttyUSB5");
 	strListPort2.append("/dev/ttyUSB6");
 	strListPort2.append("/dev/ttyUSB7");
+#else
+	strListPort2.append("COM1");
+	strListPort2.append("COM2");
+	strListPort2.append("COM3");
+	strListPort2.append("COM4");
+	strListPort2.append("COM5");
+	strListPort2.append("COM6");
+	strListPort2.append("COM7");
+	strListPort2.append("COM8");
+	strListPort2.append("COM9");
+	strListPort2.append("COM10");
+#endif
 	ui->comboBox_ComPort->addItems(strListPort2);
 	ui->comboBox_ComPort->setCurrentIndex(1);
 
@@ -77,16 +94,23 @@ DialogCOM::DialogCOM(QWidget *parent) :
 	connect(ui->comboBox_Check, SIGNAL(currentIndexChanged(QString)), this, SLOT(slot_ComParaChange(QString)));
 	connect(ui->comboBox_Stop, SIGNAL(currentIndexChanged(QString)), this, SLOT(slot_ComParaChange(QString)));
 	connect(ui->comboBox_Stream, SIGNAL(currentIndexChanged(QString)), this, SLOT(slot_ComParaChange(QString)));
+
 	m_bOpend = false;
 }
 
-//void DialogCOM::closeEvent(QCloseEvent *e)
-//{
-//	//hide();
-//}
+void DialogCOM::closeEvent(QCloseEvent *e)
+{
+	hide();
+}
 
 DialogCOM::~DialogCOM()
 {
+	if (g_threadCom != NULL)
+	{
+		g_threadCom->ManualQuit();
+		g_threadCom->quit();
+		g_threadCom = NULL;
+	}
 	delete ui;
 }
 
@@ -177,14 +201,30 @@ void DialogCOM::on_pushButton_clicked()
 	slot_ComParaChange("");
 	if (ui->pushButton->text() == "打开串口")
 	{
+		WidgetCondition *pParent = (WidgetCondition*)parent();
 		if (g_threadCom == NULL)
 		{
+#ifdef LINUX
 			g_threadCom = new ThreadReadCOM(m_comPara);
+#else
+			g_threadCom = new ThreadComWin(m_comPara);
+#endif
+			if (!g_threadCom->BOpenSerialPort())
+			{
+				QMessageBox msgbox;
+				msgbox.setText("打开串口失败，请检查串口是否存在、串口参数是否正确");
+				msgbox.exec();
+				g_threadCom->ManualQuit();
+				g_threadCom->quit();
+				g_threadCom = NULL;
+				return;
+			}
 			qRegisterMetaType<ConditionStru>("ConditionStru");
+			connect(pParent, SIGNAL(signal_writeRequest(ConditionStru)), g_threadCom, SLOT(slot_sendBuffer(ConditionStru)));
+			connect(g_threadCom, SIGNAL(signal_recvRecord(ConditionStru)), pParent, SLOT(slot_recvRecord(ConditionStru)));
 			///绑定基本窗口
 			connect(g_threadCom, SIGNAL(signal_recvRecord(ConditionStru)), this, SLOT(slot_recvRecord(ConditionStru)));
 			connect(g_threadCom, SIGNAL(signal_sendCmd(ConditionStru)), this, SLOT(slot_sendCmd(ConditionStru)));
-			connect(this, SIGNAL(signal_sendCmd(ConditionStru)), g_threadCom, SLOT(slot_sendBuffer(ConditionStru)));
 			g_threadCom->start();
 		}
 		ui->comboBox_ComPort->setEnabled(false);
@@ -195,7 +235,8 @@ void DialogCOM::on_pushButton_clicked()
 	}
 	else
 	{
-		g_threadCom->terminate();
+		g_threadCom->ManualQuit();
+		g_threadCom->quit();
 		g_threadCom = NULL;
 		ui->comboBox_ComPort->setEnabled(true);
 		ui->pushButton->setText("打开串口");
@@ -208,13 +249,4 @@ void DialogCOM::on_pushButton_clicked()
 void DialogCOM::on_pushButton_3_clicked()
 {
 
-}
-
-void DialogCOM::on_pushButton_2_clicked()
-{
-	QString strCmd = ui->plainTextEdit->toPlainText();
-	ConditionStru tmpstru;
-	tmpstru.bWrite = true;
-	tmpstru.iBuffWrite = ConvertX((unsigned char*)strCmd.toStdString().data(), strCmd.length(), tmpstru.buffWrite);
-	emit signal_sendCmd(tmpstru);
 }

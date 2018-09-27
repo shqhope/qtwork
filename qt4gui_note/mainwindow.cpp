@@ -23,8 +23,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_7_clicked()
 {
-#ifdef LINUX
 	DialogCOM *pDlgCom = new DialogCOM(this);
 	pDlgCom->exec();
-#endif
 }

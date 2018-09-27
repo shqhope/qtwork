@@ -23,29 +23,42 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     dialogreadme.cpp \
     mylib/zhylib.cpp \
-    serialport/threadreadcom.cpp
+    serialport/dialogcom.cpp \
+    serialport/threadcom.cpp
 
 HEADERS  += mainwindow.h \
     dialogreadme.h \
     mylib/zhylib.h \
-    serialport/threadreadcom.h
+    serialport/dialogcom.h \
+    serialport/threadcom.h
+
+
 
 FORMS    += mainwindow.ui \
-    dialogreadme.ui
+    dialogreadme.ui \
+    serialport/dialogcom.ui
 
-TARGETPATH = ./win/
 
 unix {
-SOURCES += serialport/dialogcom.cpp \
-    serialport/commonfunctions.cpp
+SOURCES += src_linux/threadreadcom.cpp
 
-HEADERS += serialport/dialogcom.h \
-    serialport/commonfunctions.h
-
-FORMS    += serialport/dialogcom.ui
+HEADERS += src_linux/threadreadcom.h
 
 DEFINES += LINUX
+
 TARGETPATH = ./linux/
+}
+
+win32 {
+SOURCES += src_win/serialsingleton.cpp \
+    src_win/threadcomwin.cpp
+
+HEADERS += src_win/serialsingleton.h \
+    src_win/threadcomwin.h
+
+DEFINES += WIN
+
+TARGETPATH = ./win/
 }
 
 DISTFILES += \
