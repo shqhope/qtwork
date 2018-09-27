@@ -250,3 +250,13 @@ void DialogCOM::on_pushButton_3_clicked()
 {
 
 }
+
+void DialogCOM::on_pushButton_2_clicked()
+{
+	QString strSend = ui->plainTextEdit->toPlainText();
+	ConditionStru buffStru;
+	buffStru.bWrite = true;
+	int iSendLen = ConvertX(((const unsigned char*)(strSend.toStdString().data())), strSend.length(), buffStru.buffWrite);
+	buffStru.iBuffWrite = iSendLen;
+	g_threadCom->slot_sendBuffer(buffStru);
+}

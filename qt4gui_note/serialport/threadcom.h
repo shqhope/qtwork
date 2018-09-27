@@ -30,6 +30,11 @@ typedef struct ConditionStru
 		memcpy(this->buffWrite, ref.buffWrite, iBuffWrite);
 	}
 
+	ConditionStru()
+	{
+		memset(this, 0, sizeof(struct ConditionStru));
+	}
+
 }ConditionStru;
 
 typedef struct ComconfStru
