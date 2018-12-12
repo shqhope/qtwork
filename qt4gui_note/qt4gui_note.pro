@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,13 +24,17 @@ SOURCES += main.cpp\
     dialogreadme.cpp \
     mylib/zhylib.cpp \
     serialport/dialogcom.cpp \
-    serialport/threadcom.cpp
+    serialport/threadcom.cpp \
+    svgwidget.cpp \
+    svgwindow.cpp
 
 HEADERS  += mainwindow.h \
     dialogreadme.h \
     mylib/zhylib.h \
     serialport/dialogcom.h \
-    serialport/threadcom.h
+    serialport/threadcom.h \
+    svgwidget.h \
+    svgwindow.h
 
 
 

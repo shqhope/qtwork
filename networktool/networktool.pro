@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    dialogcreateconn.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    dialogcreateconn.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialogcreateconn.ui

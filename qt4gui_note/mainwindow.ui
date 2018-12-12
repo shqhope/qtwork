@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
-    <height>287</height>
+    <width>576</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,6 +20,11 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <widget class="QWidget" name="tab_9">
+       <attribute name="title">
+        <string>进度表</string>
+       </attribute>
+      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>第一章</string>
@@ -132,6 +137,56 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>数据结构</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_11">
+          <property name="text">
+           <string>斐波那契数列</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_13">
+          <property name="text">
+           <string>汉诺塔</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" rowspan="2">
+         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_12">
+          <property name="text">
+           <string>八皇后</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_14">
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>网络工具</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_15">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
      </widget>
     </item>
    </layout>
@@ -141,8 +196,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>398</width>
-     <height>26</height>
+     <width>576</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>
